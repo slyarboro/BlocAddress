@@ -6,12 +6,13 @@ class AddressBook
 
   def initialize
      @entries = []
-   end
+  end
 
-   def add_entry(name, phone_number, email)
+     def add_entry(name, phone_number, email)
 # create variable to store insertion index
      index = 0
-     entries.each do |entry|
+
+     @entries.each do |entry|
 # compare (name) with name of current (entry)
 # if (name) proceeds (entry.name), insert index
 # if not, increment (index), continue comparing entries
@@ -20,7 +21,13 @@ class AddressBook
        end
        index += 1
      end
+
 # insert new entry into existing (entries) using calculated index
-     entries.insert(index, Entry.new(name, phone_number, email))
+     @entries.insert(index, Entry.new(name, phone_number, email))
    end
- end
+
+
+   def remove_entry(entry)
+     @entries.delete_if {|entry|}
+   end
+end
