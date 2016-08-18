@@ -43,4 +43,35 @@ class AddressBook
      end
    end
 
+   # search AddressBook for a specific entry by name
+   def binary_search(name)
+
+     # save index of leftmost item in array in (lower) variable
+     # save index of rightmost item in array in (upper)
+     # if thinking of array in left-right terms where leftmost item is zeroth index and rightmost is (entries.length-1) index
+     lower = 0
+     upper = entries.length - 1
+
+     # loop while (lower) index is less than or equal to (upper) index
+     while lower <= upper
+       # find middle index by taking sum of (lower) and (upper) and dividing by two (the mean of the two)
+       # Ruby truncates any decimal numbers, so if (upper) is (5), and (lower) is (0), then (mid) is set to (2)
+       # then retrieve name of entry at middle index and store it in (mid_name)
+       mid = (lower + upper) / 2
+       mid_name = entries[mid].name
+
+       # compare name being searched (name) to the name of middle index (mid_name)
+       # use (==) operator when comparing names which makes search case sensitive
+       if name == mid_name
+         return entries[mid]
+       elsif name < mid_name
+         upper = mid - 1
+       elsif name > mid_name
+         lower = mid + 1
+       end
+     end
+
+     # if divided and conquered to point where no match is found, we return (nil)
+     return nil
+   end
  end
