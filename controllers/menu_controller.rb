@@ -18,11 +18,12 @@
 
      # provide main menu options in command line
      puts "Main Menu - #{address_book.entries.count} entries"
-     puts "1 - View all entries"
-     puts "2 - Create an entry"
-     puts "3 - Search for an entry"
-     puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "1 - View All Entries"
+     puts "2 - View Entry Number n"
+     puts "3 - Create an Entry"
+     puts "4 - Search for an Entry"
+     puts "5 - Import Entries from a CSV"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      # retrieve user input from command line using (gets)
@@ -37,18 +38,22 @@
          main_menu
        when 2
          system "clear"
-         create_entry
+         view_entry_n
          main_menu
        when 3
          system "clear"
-         search_entries
+         create_entry
          main_menu
        when 4
          system "clear"
-         read_csv
+         search_entries
          main_menu
        when 5
-         puts "Good-bye!"
+         system "clear"
+         read_csv
+         main_menu
+       when 6
+         puts "Laters."
 
          # terminate program with (exit(0))
          # 0 signals that the program is exiting without error
@@ -80,6 +85,23 @@
 
    end
 
+
+
+   # ***
+   def view_entry_n
+     system "clear"
+     puts "What entry do you want to see?"
+     print "Entry number: "
+     selection = gets.chomp
+
+    @address_book.entries.each_with_index do |entry, index|
+      if selection.to_i - 1 == index
+        puts entry
+      else
+        puts "Thanks for playing; try again."
+      end
+    end
+  end
 
 
 
