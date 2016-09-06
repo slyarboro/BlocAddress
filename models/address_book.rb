@@ -27,7 +27,7 @@ class AddressBook
    end
 
 
-   def remove_entry(entry)
-     @entries.delete_if {|entry|}
+   def remove_entry(name)
+     @entries.delete_if {|entry| name = entry.name}
    end
 end
