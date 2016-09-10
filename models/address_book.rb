@@ -7,7 +7,9 @@ class AddressBook
 
   def initialize
      @entries = []
-   end
+  end
+
+
 
    def add_entry(name, phone_number, email)
 # create variable to store insertion index
@@ -24,6 +26,14 @@ class AddressBook
 # insert new entry into existing (entries) using calculated index
      entries.insert(index, Entry.new(name, phone_number, email))
    end
+
+
+
+   def obliterate
+     @entries = []
+   end
+
+
 
    # defined (import_from_csv)
    # method will read file using (File.read)
@@ -42,6 +52,7 @@ class AddressBook
        add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
      end
    end
+
 
    # search AddressBook for a specific entry by name
    def binary_search(name)

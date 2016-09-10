@@ -29,7 +29,6 @@ require_relative '../models/address_book'
      it "initializes entries as empty" do
        expect(book.entries.size).to eq(0)
      end
-
    end
 
    describe "#add_entry" do
@@ -46,6 +45,19 @@ require_relative '../models/address_book'
        expect(new_entry.name).to eq('Ada Lovelace')
        expect(new_entry.phone_number).to eq('010.012.1815')
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
+     end
+   end
+
+   describe "#obliterate" do
+     it "deletes all entries in the address book" do
+       book.add_entry("Bill", "555-555-4854", "bill@blocmail.com")
+       book.add_entry("Bob", "555-555-5415", "bob@blocmail.com")
+       book.add_entry("Sally", "555-555-4646", "sally@blocmail.com")
+       book.add_entry("Sussie", "555-555-2036", "sussie@blocmail.com")
+
+       book.obliterate
+
+       expect(book.entries.size).to eq(0)
      end
    end
 

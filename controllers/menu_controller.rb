@@ -19,7 +19,8 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - Obliterate all the things"
+    puts "6 - Exit"
     print "Enter your selection: "
 
   # retrieve user input from command line using (gets)
@@ -49,6 +50,12 @@ class MenuController
         main_menu
 
       when 5
+        system "clear"
+        @address_book.obliterate
+        puts "Wipin' out, WIPEOUT! (Entry demolitions are sponsored in part by Fat Boys feat. the Beach Boys)"
+        main_menu
+
+      when 6
         puts "Good-bye!"
 
   # terminate program with (exit(0))
